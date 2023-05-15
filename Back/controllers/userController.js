@@ -1,5 +1,6 @@
 const userModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 //get all user
@@ -17,7 +18,7 @@ module.exports.allUser = (req, res) => {
 
 //get user
 module.exports.getUser = async (req, res) => {
-  const query = { name: req.params.name };
+  const query = { name: req.body.name };
   try {
     const user = await userModel.find(query);
     console.log(user);
@@ -66,7 +67,13 @@ module.exports.connexion = async (req, res) => {
       if (!result) {
         return res.status(402).json({ error: 'Nom ou mot de passe incorrect' });
       }
-      return res.status(200).json(user);
+      return res.status(200).json({
+        userName: user.name,
+        token: jwt.sign(
+          { userName: user.name },
+          process.env.TOKEN_SECRET,
+          { expiresIn: '24h' })
+      });
     });     
 
   } catch (err) {
