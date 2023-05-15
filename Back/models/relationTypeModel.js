@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
 
-const typeSchema = new mongoose.Schema({
-    name:{
+const relationTypeSchema = new mongoose.Schema({
+    typeFort:{
+        type: Number,
+        required: true,
+        ref: 'type'
+    },
+    typeFaible:{
         type: String,
         required: true,
-        unique: true,
+        ref: 'type'
     },
-    description:{
-        type: String,
-    },
-    image:{
-        type: String,
-    }
+
 });
 
 const typeModel = mongoose.model('type', typeSchema);

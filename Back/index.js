@@ -15,6 +15,7 @@ app.use("/pokemon", require('./routes/pokemonRoutes'));
 app.use("/dresseur", require('./routes/dresseurRoutes'));
 app.use("/type", require('./routes/typeRoutes'))
 app.use("/user", require('./routes/userRoutes'))
+app.use("/equipe", require('./routes/equipeRoutes'))
 
 
 app.listen(process.env.PORT, () => {

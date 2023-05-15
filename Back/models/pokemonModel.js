@@ -15,6 +15,7 @@ const pokemonSchema = new mongoose.Schema({
     type:{
         type: String,
         required: true,
+        ref: 'type'
     },
     description:{
         type: String,

@@ -1,4 +1,7 @@
 const pokemonModel = require('../models/pokemonModel');
+const typeModel = require('../models/typeModel');
+
+const fetch = require('node-fetch');
 
 module.exports.allPokemons = (req, res) => {
     pokemonModel
@@ -14,6 +17,12 @@ module.exports.allPokemons = (req, res) => {
 
 
 module.exports.addPokemon = async (req, res) => {
+
+    const type = await typeModel.findOne({ name: req.body.type });
+        if (!type) {
+            return res.status(404).send({ message: 'type not found' });
+        }
+
     const newPokemon = new pokemonModel({
         number: req.body.number,
         name: req.body.name,
@@ -30,6 +39,7 @@ module.exports.addPokemon = async (req, res) => {
         return res.status(400).json({message: "Erreur lors de l'ajout du pokémon"});
     }
 }
+
 
 module.exports.getPokemon = async (req, res) => {
     const query = {number: req.params.number};

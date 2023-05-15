@@ -16,8 +16,6 @@ module.exports.allType = (req, res) => {
 module.exports.addType = async (req, res) => {
     const newType = new typeModel({
         name: req.body.name,
-        fortContre: req.body.fortContre,
-        faibleContre: req.body.faibleContre,
         description: req.body.description,
         image: req.body.image,
     });

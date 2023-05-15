@@ -9,12 +9,11 @@ const dresseurSchema = new mongoose.Schema({
     },
     description:{
         type: String,
-        required: true,
         maxLength: 500
     },
     image:{
         type: String,
-        required: true,
+
     }
 });
 
