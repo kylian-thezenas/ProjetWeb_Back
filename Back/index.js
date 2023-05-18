@@ -16,6 +16,7 @@ app.use("/dresseur", require('./routes/dresseurRoutes'));
 app.use("/type", require('./routes/typeRoutes'))
 app.use("/user", require('./routes/userRoutes'))
 app.use("/equipe", require('./routes/equipeRoutes'))
+app.use("/favoris", require('./routes/favorisRoutes'))
 
 
 app.listen(process.env.PORT, () => {

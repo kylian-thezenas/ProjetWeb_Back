@@ -20,7 +20,7 @@ module.exports.addEquipe = async (req, res) => {
         const { nameDresseur, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6 } = req.body;
 
         // Vérifie si le dresseur existe déjà dans la base de données
-        const dresseur = await dresseurModel.find({ name: nameDresseur });
+        const dresseur = await dresseurModel.findOne({ name: nameDresseur });
         if (!dresseur) {
             return res.status(404).send({ message: 'Dresseur not found' });
         }

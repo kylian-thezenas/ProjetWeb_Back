@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
 
 const favorisSchema = new mongoose.Schema({
-    dresseurName:{
+    userName:{
         type: String,
-        ref: 'Dresseur',
+        ref: 'user',
         required: true
     },
-    pokemonNumber:{
-        type: Number,
-        ref: 'Pokemon',
+    pokemonName:{
+        type: String,
+        ref: 'pokemon',
         required: true
     }
 });
+
+favorisSchema.index({ userName: 1, pokemonName: 1 }, { unique: true });
 
 const favorisModel = mongoose.model('favoris', favorisSchema);
 module.exports = favorisModel;
