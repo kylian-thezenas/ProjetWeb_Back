@@ -19,7 +19,7 @@ module.exports.allUser = (req, res) => {
 //get user
 module.exports.getUser = async (req, res) => {
   const query = { name: req.auth.userName };
-  console.log('query = ' +query);
+  console.log('query = ' + query);
   console.log('name = ' + req.auth.userName);
   try {
     const user = await userModel.find(query);
